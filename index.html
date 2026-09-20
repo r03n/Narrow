@@ -21,6 +21,13 @@
             <span>REAL ESTATE</span>
           </div>
         </a>
+        <!-- Hamburger Menu Button -->
+        <button type="button" class="burger-menu" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
         <nav class="nav-links">
           <a href="#" class="active">Home</a>
           <a href="#">Properties</a>
@@ -244,5 +251,16 @@
         </div>
       </div>
     </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const burgerMenu = document.querySelector('.burger-menu');
+      const navLinks = document.querySelector('.nav-links');
+
+      burgerMenu.addEventListener('click', () => {
+        burgerMenu.classList.toggle('active-burger');
+        navLinks.classList.toggle('active-menu');
+      });
+    </script>
   </body>
 </html>
