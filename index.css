@@ -126,7 +126,7 @@
 
 .property-info h3 {
     font-family: var(--font-main); 
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
     margin-bottom: 5px;
     white-space: nowrap;
@@ -232,7 +232,7 @@
 }
 
 .feature-card h3 {
-    font-size: 28px; 
+    font-size: 20px; 
     font-weight: normal; 
     margin-bottom: 15px;
 }
