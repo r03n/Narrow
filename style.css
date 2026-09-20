@@ -216,3 +216,39 @@ nav a {
     font-size: 14px;
     line-height: 1.6;
 }
+
+.sell-section {
+    padding: 80px 15px;
+
+    background: #72000b;
+    color: white;
+
+    text-align: center;
+}
+
+.sell-content {
+    max-width: 700px;
+    margin: auto;
+}
+
+.sell-content h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.sell-content p {
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.sell-content a {
+    display: inline-block;
+
+    padding: 13px 22px;
+
+    background: white;
+    color: #72000b;
+
+    font-size: 14px;
+    font-weight: 600;
+}
