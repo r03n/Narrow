@@ -198,6 +198,10 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     color: var(--text-dark);
     background-color: #ffffff;
