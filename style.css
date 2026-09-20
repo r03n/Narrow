@@ -59,3 +59,63 @@ nav a {
     font-size: 14px;
     font-weight: 600;
 }
+
+.hero {
+    height: 560px;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.45)
+        ),
+        url("images/hero.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 1030px;
+    width: 100%;
+
+    margin: auto;
+    padding: 0 15px;
+
+    color: white;
+}
+
+.hero-content h1 {
+    max-width: 650px;
+
+    font-size: 52px;
+    line-height: 1.1;
+
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    max-width: 550px;
+
+    font-size: 18px;
+    line-height: 1.6;
+
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.hero-buttons a {
+    padding: 13px 22px;
+
+    background: #72000b;
+    color: white;
+
+    font-size: 14px;
+    font-weight: 600;
+}
