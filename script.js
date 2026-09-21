@@ -19,7 +19,7 @@ const propertiesData = [
     badge: "Condominium",
     image: "images/house2.png",
     title: "Mid<span class=\"sans-hyphen\">-</span>Rise Studio Apartment",
-    location: "San Fernando, Pampanga",
+    location: "City of San Fernando, Pampanga",
     city: "San Fernando",
     price: 3200000,
     beds: 1,
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const filtered = propertiesData.filter(prop => {
           // Location Filter
-          if (locVal !== 'Anywhere in Pampanga' && prop.city !== locVal) return false;
+          if (locVal !== 'All' && prop.city !== locVal) return false;
           
           // Property Type Filter
           if (typeVal !== 'All Types' && prop.type !== typeVal) return false;
