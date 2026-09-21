@@ -3,14 +3,15 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Narrow Real Estate</title>
+    <title>Properties - Narrow Real Estate</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="properties.css">
   </head>
   <body>
+    <!-- Global Header -->
     <header>
       <div class="nav-container">
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
           <img
             src="images/narrow.png"
             alt="Narrow Real Estate Logo"
@@ -21,6 +22,7 @@
             <span>REAL ESTATE</span>
           </div>
         </a>
+
         <button type="button" class="burger-menu" aria-label="Toggle navigation">
           <span></span>
           <span></span>
@@ -28,109 +30,94 @@
         </button>
 
         <nav class="nav-links">
-          <a href="#" class="active">Home</a>
-          <a href="properties.html">Properties</a>
+          <a href="index.html">Home</a>
+          <a href="properties.html" class="active">Properties</a>
           <a href="#">List Your Own Property</a>
           <a href="#">Contact</a>
         </nav>
       </div>
     </header>
 
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <h1>Find a place<br>to call<br>your own.</h1>
-          <p>
-            Discover modern, approachable, and affordable homes across Pampanga.
-            Perfect for young professionals and first-time buyers.
-          </p>
-          <div class="hero-buttons">
-            <button type="button" class="btn btn-primary">
-              Browse Properties
-            </button>
-            <button type="button" class="btn btn-outline">
-              List Your Property
-            </button>
+    <!-- Properties Page Content -->
+    <main class="properties-page">
+      <div class="container filter-container">
+        <div class="filter-bar">
+          <div class="filter-group">
+            <label>Location</label>
+            <div class="select-wrapper">
+              <select id="filter-location">
+                <option value="Anywhere in Pampanga">Anywhere in Pampanga</option>
+                <option value="Angeles City">Angeles City</option>
+                <option value="San Fernando">San Fernando</option>
+                <option value="Mabalacat">Mabalacat</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Porac">Porac</option>
+                <option value="Bacolor">Bacolor</option>
+              </select>
+            </div>
           </div>
+
+          <div class="filter-group">
+            <label>Property Type</label>
+            <div class="select-wrapper">
+              <select id="filter-type">
+                <option value="All Types">All Types</option>
+                <option value="House & Lot">House &amp; Lot</option>
+                <option value="Condominium">Condominium</option>
+                <option value="Townhouse">Townhouse</option>
+                <option value="Lot">Lot</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label>Max Price (₱)</label>
+            <div class="select-wrapper">
+              <select id="filter-price">
+                <option value="Any Price">Any Price</option>
+                <option value="2000000">Under ₱2,000,000</option>
+                <option value="4000000">Under ₱4,000,000</option>
+                <option value="6000000">Under ₱6,000,000</option>
+                <option value="10000000">Under ₱10,000,000</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label>Bedrooms</label>
+            <div class="select-wrapper">
+              <select id="filter-beds">
+                <option value="Any">Any</option>
+                <option value="1">1+ Beds</option>
+                <option value="2">2+ Beds</option>
+                <option value="3">3+ Beds</option>
+                <option value="4">4+ Beds</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="button" id="btn-search" class="btn btn-primary btn-search">Search</button>
         </div>
       </div>
-    </section>
 
-    <section class="featured-properties">
       <div class="container">
-        <h2 class="section-title">Featured Properties in Pampanga</h2>
-        <p class="section-subtitle">
-          Explore our carefully selected listings suited for modern lifestyles.
-        </p>
+        <div class="properties-header">
+          <h2 class="section-title">Featured Properties in Pampanga</h2>
+          <p class="section-subtitle">Explore our carefully selected listings suited for modern lifestyles.</p>
+        </div>
 
         <!-- Container for JS injected properties -->
-        <div class="properties-grid" id="home-properties-grid"></div>
+        <div class="properties-grid" id="properties-page-grid"></div>
 
       </div>
-    </section>
+    </main>
 
-    <section class="why-us">
-      <div class="container">
-        <h2 class="section-title">Why Narrow Real Estate?</h2>
-        <p class="section-subtitle">
-          We make buying and selling simple, clear, and approachable.
-        </p>
-
-        <div class="features-grid">
-          <div class="feature-card">
-            <span class="feature-icon">📍</span>
-            <h3>Local Focus</h3>
-            <p>
-              We specialize exclusively in Pampanga, offering deep insights into
-              emerging neighborhoods and prime locations.
-            </p>
-          </div>
-          <div class="feature-card">
-            <span class="feature-icon">✨</span>
-            <h3>Clear Listings</h3>
-            <p>
-              No hidden fees, no confusing jargon. Just high-quality photos and
-              accurate property details you can trust.
-            </p>
-          </div>
-          <div class="feature-card">
-            <span class="feature-icon">🤝</span>
-            <h3>Buyer<span class="sans-hyphen">-</span>Friendly</h3>
-            <p>
-              Designed with first-time homebuyers in mind. We guide young adults
-              step-by-step through the process.
-            </p>
-          </div>
-          <div class="feature-card">
-            <span class="feature-icon">💸</span>
-            <h3>Simple Selling</h3>
-            <p>
-              List your property with ease. We present your home professionally
-              to attract the right buyers quickly.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="container">
-        <h2>Have a property to sell?</h2>
-        <p>
-          Join hundreds of homeowners in Pampanga who trust Narrow Real Estate
-          to present their properties professionally.
-        </p>
-        <button type="button" class="btn btn-primary btn-cta">
-          List Your Property Today
-        </button>
-      </div>
-    </section>
-
+    <!-- Global Footer -->
     <footer>
       <div class="container">
         <div class="footer-grid">
           <div class="footer-col">
-            <a href="#" class="footer-logo">
+            <a href="index.html" class="footer-logo">
               <img
                 src="images/narrow.png"
                 alt="Narrow Logo"
@@ -149,8 +136,8 @@
           <div class="footer-col">
             <h4>Quick Links</h4>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Properties</a></li>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="properties.html">Properties</a></li>
               <li><a href="#">List Your Property</a></li>
               <li><a href="#">Contact Us</a></li>
             </ul>
