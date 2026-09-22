@@ -7,8 +7,8 @@ const propertiesData = [
     yearBuilt: 2024,
     images: [
       "https://images.unsplash.com/photo-1613490908836-9b1db1eb47b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     ],
     title: "Sleek Modern House near Clark",
     location: "Angeles City, Pampanga",
@@ -199,7 +199,7 @@ const renderProperties = (properties, container, pageType) => {
 // Detail Page Renderer
 const renderPropertyDetail = (container) => {
   const params = new URLSearchParams(window.location.search);
-  const id = parseInt(params.get('id')) || 1; // Default to ID 1 if no param
+  const id = parseInt(params.get('id')) || 1; 
   const prop = propertiesData.find(p => p.id === id);
 
   if (!prop) {
@@ -208,7 +208,15 @@ const renderPropertyDetail = (container) => {
   }
 
   const featuresList = prop.features.map(f => `<li>${f}</li>`).join('');
-  const imgData = JSON.stringify(prop.images); // Store images for JS slider
+
+  // Generate fading stack images
+  const galleryImagesHtml = prop.images.map((img, index) => 
+    `<img src="${img}" alt="Property View ${index + 1}" class="gallery-img ${index === 0 ? 'active' : ''}" onclick="openModal()">`
+  ).join('');
+
+  const modalImagesHtml = prop.images.map((img, index) => 
+    `<img src="${img}" alt="Fullscreen View ${index + 1}" class="modal-img ${index === 0 ? 'active' : ''}">`
+  ).join('');
 
   const detailHtml = `
     <div class="container">
@@ -233,19 +241,19 @@ const renderPropertyDetail = (container) => {
         </div>
       </div>
 
-      <!-- Main Carousel -->
+      <!-- Main Carousel (Fading Stack) -->
       <div class="detail-gallery">
         <button class="gallery-nav gallery-prev" onclick="changeSlide(-1)">&#10094;</button>
-        <img src="${prop.images[0]}" alt="Property View" class="gallery-img" id="main-gallery-img" onclick="openModal()">
+        ${galleryImagesHtml}
         <button class="gallery-nav gallery-next" onclick="changeSlide(1)">&#10095;</button>
       </div>
 
-      <!-- Fullscreen Modal -->
+      <!-- Fullscreen Modal (Fading Stack) -->
       <div id="galleryModal" class="gallery-modal">
         <button class="modal-close" onclick="closeModal()">&times;</button>
         <div class="modal-content-wrapper">
           <button class="modal-nav modal-prev" onclick="changeSlide(-1)">&#10094;</button>
-          <img src="${prop.images[0]}" class="modal-img" id="modal-gallery-img" alt="Fullscreen Property View">
+          ${modalImagesHtml}
           <button class="modal-nav modal-next" onclick="changeSlide(1)">&#10095;</button>
         </div>
       </div>
@@ -331,20 +339,28 @@ const renderPropertyDetail = (container) => {
 
   // Carousel logic attached directly to window for inline onclick execution
   let currentSlide = 0;
-  const images = prop.images;
+  const totalSlides = prop.images.length;
 
   window.changeSlide = function(direction) {
+    const galleryImages = document.querySelectorAll('.detail-gallery .gallery-img');
+    const modalImages = document.querySelectorAll('#galleryModal .modal-img');
+
+    // Remove active state
+    galleryImages[currentSlide].classList.remove('active');
+    modalImages[currentSlide].classList.remove('active');
+
     currentSlide += direction;
     
     // Circular logic
-    if (currentSlide >= images.length) {
+    if (currentSlide >= totalSlides) {
       currentSlide = 0;
     } else if (currentSlide < 0) {
-      currentSlide = images.length - 1;
+      currentSlide = totalSlides - 1;
     }
 
-    document.getElementById('main-gallery-img').src = images[currentSlide];
-    document.getElementById('modal-gallery-img').src = images[currentSlide];
+    // Add active state to crossfade the new image in
+    galleryImages[currentSlide].classList.add('active');
+    modalImages[currentSlide].classList.add('active');
   };
 
   window.openModal = function() {
