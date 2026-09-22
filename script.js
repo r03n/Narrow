@@ -7,8 +7,8 @@ const propertiesData = [
     yearBuilt: 2024,
     images: [
       "https://images.unsplash.com/photo-1613490908836-9b1db1eb47b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
     ],
     title: "Sleek Modern House near Clark",
     location: "Angeles City, Pampanga",
@@ -38,7 +38,7 @@ const propertiesData = [
     badge: "Condominium",
     mls: "MLS #882103",
     yearBuilt: 2022,
-    images: ["images/house2.png", "images/house2.png", "images/house2.png"],
+    images: ["images/house2.png", "images/house3.png", "images/house4.png"],
     title: "Mid<span class=\"sans-hyphen\">-</span>Rise Studio Apartment",
     location: "City of San Fernando, Pampanga",
     city: "San Fernando",
@@ -59,7 +59,7 @@ const propertiesData = [
     badge: "Townhouse",
     mls: "MLS #449212",
     yearBuilt: 2023,
-    images: ["images/house3.png", "images/house3.png", "images/house3.png"],
+    images: ["images/house3.png", "images/house1.png", "images/house2.png"],
     title: "Contemporary Townhouse",
     location: "Mabalacat, Pampanga",
     city: "Mabalacat",
@@ -80,7 +80,7 @@ const propertiesData = [
     badge: "House & Lot",
     mls: "MLS #112094",
     yearBuilt: 2021,
-    images: ["images/house4.png", "images/house4.png", "images/house4.png"],
+    images: ["images/house4.png", "images/house5.png", "images/house6.png"],
     title: "Spacious Family Home",
     location: "Mexico, Pampanga",
     city: "Mexico",
@@ -101,7 +101,7 @@ const propertiesData = [
     badge: "Lot",
     mls: "MLS #774391",
     yearBuilt: "N/A",
-    images: ["images/house5.png", "images/house5.png", "images/house5.png"],
+    images: ["images/house5.png", "images/house1.png", "images/house3.png"],
     title: "Prime Residential Lot",
     location: "Porac, Pampanga",
     city: "Porac",
@@ -122,7 +122,7 @@ const propertiesData = [
     badge: "House & Lot",
     mls: "MLS #558291",
     yearBuilt: 2020,
-    images: ["images/house6.png", "images/house6.png", "images/house6.png"],
+    images: ["images/house6.png", "images/house2.png", "images/house4.png"],
     title: "Bungalow Retreat",
     location: "Bacolor, Pampanga",
     city: "Bacolor",
@@ -208,6 +208,7 @@ const renderPropertyDetail = (container) => {
   }
 
   const featuresList = prop.features.map(f => `<li>${f}</li>`).join('');
+  const imgData = JSON.stringify(prop.images); // Store images for JS slider
 
   const detailHtml = `
     <div class="container">
@@ -232,10 +233,21 @@ const renderPropertyDetail = (container) => {
         </div>
       </div>
 
+      <!-- Main Carousel -->
       <div class="detail-gallery">
-        <img src="${prop.images[0]}" alt="Main view" class="gallery-img">
-        <img src="${prop.images[1]}" alt="Secondary view" class="gallery-img">
-        <img src="${prop.images[2]}" alt="Tertiary view" class="gallery-img">
+        <button class="gallery-nav gallery-prev" onclick="changeSlide(-1)">&#10094;</button>
+        <img src="${prop.images[0]}" alt="Property View" class="gallery-img" id="main-gallery-img" onclick="openModal()">
+        <button class="gallery-nav gallery-next" onclick="changeSlide(1)">&#10095;</button>
+      </div>
+
+      <!-- Fullscreen Modal -->
+      <div id="galleryModal" class="gallery-modal">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="modal-content-wrapper">
+          <button class="modal-nav modal-prev" onclick="changeSlide(-1)">&#10094;</button>
+          <img src="${prop.images[0]}" class="modal-img" id="modal-gallery-img" alt="Fullscreen Property View">
+          <button class="modal-nav modal-next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
       </div>
 
       <div class="detail-content-grid">
@@ -284,7 +296,7 @@ const renderPropertyDetail = (container) => {
             </div>
             
             <form class="inquiry-form" onsubmit="event.preventDefault(); alert('Inquiry Sent!');">
-              <h3 style="font-size: 18px;">Inquire About This Property</h3>
+              <h3>Inquire About This Property</h3>
               <div class="form-group">
                 <label>Full Name</label>
                 <input type="text" placeholder="Juan Dela Cruz" required>
@@ -317,11 +329,36 @@ const renderPropertyDetail = (container) => {
 
   container.innerHTML = detailHtml;
 
+  // Carousel logic attached directly to window for inline onclick execution
+  let currentSlide = 0;
+  const images = prop.images;
+
+  window.changeSlide = function(direction) {
+    currentSlide += direction;
+    
+    // Circular logic
+    if (currentSlide >= images.length) {
+      currentSlide = 0;
+    } else if (currentSlide < 0) {
+      currentSlide = images.length - 1;
+    }
+
+    document.getElementById('main-gallery-img').src = images[currentSlide];
+    document.getElementById('modal-gallery-img').src = images[currentSlide];
+  };
+
+  window.openModal = function() {
+    document.getElementById('galleryModal').classList.add('active');
+  };
+
+  window.closeModal = function() {
+    document.getElementById('galleryModal').classList.remove('active');
+  };
+
   // Render 2 similar properties (excluding the current one)
   const similarGrid = document.getElementById('similar-properties-grid');
   const similarProps = propertiesData.filter(p => p.id !== id && p.type === prop.type).slice(0, 2);
   
-  // Fallback if not enough similar types
   if(similarProps.length < 2) {
       const fallback = propertiesData.filter(p => p.id !== id && !similarProps.includes(p));
       similarProps.push(...fallback.slice(0, 2 - similarProps.length));
