@@ -196,6 +196,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* THIS FIXES THE OVERFLOW ISSUE */
 }
 
 html {
@@ -292,7 +293,7 @@ header {
     align-items: center;
     gap: 15px;
     transition: opacity 0.3s ease;
-    z-index: 1001; /* Keeps logo above mobile menu */
+    z-index: 1001; 
 }
 
 .logo:hover {
@@ -464,15 +465,13 @@ footer {
 }
 
 @media (max-width: 768px) {
-    /* Enable burger menu */
     .burger-menu {
         display: flex;
     }
 
-    /* Convert nav links to dropdown */
     .nav-links {
         position: absolute;
-        top: 100%; /* Positions it directly under the header */
+        top: 100%; 
         left: 0;
         width: 100%;
         background-color: #ffffff;
@@ -483,7 +482,6 @@ footer {
         box-shadow: 0 10px 15px rgba(0,0,0,0.05);
         border-top: 1px solid #eaeaea;
         
-        /* Hidden initially */
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
@@ -491,7 +489,7 @@ footer {
     }
 
     .nav-links a {
-        font-size: 18px; /* Larger tap targets for mobile */
+        font-size: 18px; 
     }
 
     .nav-links a.active {
@@ -499,14 +497,12 @@ footer {
         color: var(--primary-red);
     }
 
-    /* Active state for dropdown */
     .nav-links.active-menu {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
     }
 
-    /* Active state animation for hamburger */
     .burger-menu.active-burger span:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
     }
@@ -519,7 +515,6 @@ footer {
         transform: translateY(-9px) rotate(-45deg);
     }
 
-    /* Footer adjustments */
     .footer-grid {
         grid-template-columns: 1fr;
         text-align: center;

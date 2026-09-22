@@ -3,7 +3,13 @@ const propertiesData = [
   {
     id: 1,
     badge: "House & Lot",
-    image: "images/house1.png",
+    mls: "MLS #240983",
+    yearBuilt: 2024,
+    images: [
+      "https://images.unsplash.com/photo-1613490908836-9b1db1eb47b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    ],
     title: "Sleek Modern House near Clark",
     location: "Angeles City, Pampanga",
     city: "Angeles City",
@@ -12,12 +18,27 @@ const propertiesData = [
     baths: 2,
     floorArea: 120,
     lotArea: 150,
-    type: "House & Lot"
+    type: "House & Lot",
+    description: `
+      <p>Welcome to this brand new, meticulously designed modern minimalist home located just minutes away from the Clark Freeport Zone. Perfectly tailored for young professionals and growing families, this house blends contemporary aesthetics with practical everyday living.</p>
+      <p>The open-concept ground floor maximizes natural light, featuring a spacious living area that seamlessly transitions into a sleek, modular kitchen. Upstairs, the master bedroom boasts an en-suite bathroom and a private balcony overlooking the quiet neighborhood.</p>
+      <p>Situated in a secure, flood-free subdivision in Angeles City, you'll enjoy quick access to major expressways (NLEX/SCTEX), top-tier schools, shopping malls, and lifestyle hubs. Finding a place to call your own in Pampanga doesn't get much better than this.</p>
+    `,
+    features: [
+      "1-Car Garage", "Modular Kitchen", "Spacious Living Area", "Landscaped Garden",
+      "24/7 Security", "Balcony", "Built-in Cabinets", "Proximity to Clark",
+      "Clubhouse Access", "Flood-Free Area"
+    ],
+    neighborhood: "Premium Subdivision, Angeles City",
+    locationContext: "This property is strategically located 10 minutes away from Clark International Airport and SM City Clark. It offers immediate access to the MacArthur Highway, making commutes to San Fernando or Mabalacat straightforward and convenient.",
+    agent: { name: "Raquel Rivera", initials: "RR", title: "Listing Agent" }
   },
   {
     id: 2,
     badge: "Condominium",
-    image: "images/house2.png",
+    mls: "MLS #882103",
+    yearBuilt: 2022,
+    images: ["images/house2.png", "images/house2.png", "images/house2.png"],
     title: "Mid<span class=\"sans-hyphen\">-</span>Rise Studio Apartment",
     location: "City of San Fernando, Pampanga",
     city: "San Fernando",
@@ -26,12 +47,19 @@ const propertiesData = [
     baths: 1,
     floorArea: 35,
     lotArea: null,
-    type: "Condominium"
+    type: "Condominium",
+    description: "<p>A beautiful mid-rise studio apartment perfect for young professionals.</p>",
+    features: ["Swimming Pool", "Gym", "24/7 Security", "Balcony"],
+    neighborhood: "City Center, San Fernando",
+    locationContext: "Located right in the heart of San Fernando.",
+    agent: { name: "Raquel Rivera", initials: "RR", title: "Listing Agent" }
   },
   {
     id: 3,
     badge: "Townhouse",
-    image: "images/house3.png",
+    mls: "MLS #449212",
+    yearBuilt: 2023,
+    images: ["images/house3.png", "images/house3.png", "images/house3.png"],
     title: "Contemporary Townhouse",
     location: "Mabalacat, Pampanga",
     city: "Mabalacat",
@@ -40,12 +68,19 @@ const propertiesData = [
     baths: 2,
     floorArea: 85,
     lotArea: 60,
-    type: "Townhouse"
+    type: "Townhouse",
+    description: "<p>A contemporary townhouse offering great value and space for growing families.</p>",
+    features: ["1-Car Garage", "Gated Community", "Modern Design"],
+    neighborhood: "Quiet Suburb, Mabalacat",
+    locationContext: "Easy access to NLEX.",
+    agent: { name: "Raquel Rivera", initials: "RR", title: "Listing Agent" }
   },
   {
     id: 4,
     badge: "House & Lot",
-    image: "images/house4.png",
+    mls: "MLS #112094",
+    yearBuilt: 2021,
+    images: ["images/house4.png", "images/house4.png", "images/house4.png"],
     title: "Spacious Family Home",
     location: "Mexico, Pampanga",
     city: "Mexico",
@@ -53,13 +88,20 @@ const propertiesData = [
     beds: 4,
     baths: 3,
     floorArea: 180,
-    lotArea: null,
-    type: "House & Lot"
+    lotArea: 200,
+    type: "House & Lot",
+    description: "<p>A large family home with massive yard space.</p>",
+    features: ["2-Car Garage", "Large Garden", "Spacious Kitchen"],
+    neighborhood: "Family Village, Mexico",
+    locationContext: "Close to local markets and schools.",
+    agent: { name: "Raquel Rivera", initials: "RR", title: "Listing Agent" }
   },
   {
     id: 5,
     badge: "Lot",
-    image: "images/house5.png",
+    mls: "MLS #774391",
+    yearBuilt: "N/A",
+    images: ["images/house5.png", "images/house5.png", "images/house5.png"],
     title: "Prime Residential Lot",
     location: "Porac, Pampanga",
     city: "Porac",
@@ -68,12 +110,19 @@ const propertiesData = [
     baths: null,
     floorArea: null,
     lotArea: 200,
-    type: "Lot"
+    type: "Lot",
+    description: "<p>A prime residential lot ready for your dream home construction.</p>",
+    features: ["Corner Lot", "Clubhouse Access", "Secured Area"],
+    neighborhood: "Exclusive Estate, Porac",
+    locationContext: "Near the new development zones in Porac.",
+    agent: { name: "Raquel Rivera", initials: "RR", title: "Listing Agent" }
   },
   {
     id: 6,
     badge: "House & Lot",
-    image: "images/house6.png",
+    mls: "MLS #558291",
+    yearBuilt: 2020,
+    images: ["images/house6.png", "images/house6.png", "images/house6.png"],
     title: "Bungalow Retreat",
     location: "Bacolor, Pampanga",
     city: "Bacolor",
@@ -81,13 +130,19 @@ const propertiesData = [
     beds: 3,
     baths: 2,
     floorArea: 110,
-    lotArea: null,
-    type: "House & Lot"
+    lotArea: 150,
+    type: "House & Lot",
+    description: "<p>A cozy bungalow retreat perfect for retirees or small families.</p>",
+    features: ["Single Story", "Patio", "Renovated"],
+    neighborhood: "Heritage Suburb, Bacolor",
+    locationContext: "Peaceful environment rich in local history.",
+    agent: { name: "Raquel Rivera", initials: "RR", title: "Listing Agent" }
   }
 ];
 
-const formatPrice = (price) => '₱ ' + price.toLocaleString('en-US');
+const formatPrice = (price) => '₱' + price.toLocaleString('en-US');
 
+// Reusable card renderer for Home, Properties, and Similar grids
 const renderProperties = (properties, container, pageType) => {
   container.innerHTML = '';
 
@@ -98,9 +153,9 @@ const renderProperties = (properties, container, pageType) => {
 
   properties.forEach(prop => {
     const badgeHtml = prop.badge ? `<span class="badge">${prop.badge}</span>` : '';
+    const mainImg = prop.images && prop.images.length > 0 ? prop.images[0] : prop.image;
     let statsHtml = '';
 
-    // Different stat formats based on the page type to match the original designs
     if (pageType === 'home') {
       statsHtml = `
         <div class="stat-item"><span>${prop.beds || 'N/A'}</span> Beds</div>
@@ -121,7 +176,7 @@ const renderProperties = (properties, container, pageType) => {
       <div class="property-card">
         <div class="property-img-container">
           ${badgeHtml}
-          <img src="${prop.image}" alt="${prop.title.replace(/<[^>]*>?/gm, '')}">
+          <img src="${mainImg}" alt="${prop.title.replace(/<[^>]*>?/gm, '')}">
         </div>
         <div class="property-info">
           <h3>${prop.title}</h3>
@@ -132,13 +187,147 @@ const renderProperties = (properties, container, pageType) => {
           <div class="stats">
             ${statsHtml}
           </div>
-          <a href="#" class="btn-view">View Property</a>
+          <a href="property-detail.html?id=${prop.id}" class="btn-view">View Property</a>
         </div>
       </div>
     `;
 
     container.insertAdjacentHTML('beforeend', cardHtml);
   });
+};
+
+// Detail Page Renderer
+const renderPropertyDetail = (container) => {
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get('id')) || 1; // Default to ID 1 if no param
+  const prop = propertiesData.find(p => p.id === id);
+
+  if (!prop) {
+    container.innerHTML = '<div class="container" style="padding: 100px 0; text-align:center;"><h2>Property not found.</h2><a href="properties.html">Back to Properties</a></div>';
+    return;
+  }
+
+  const featuresList = prop.features.map(f => `<li>${f}</li>`).join('');
+
+  const detailHtml = `
+    <div class="container">
+      <div class="back-link">
+        <a href="properties.html">← Back to Properties</a>
+      </div>
+
+      <div class="detail-header-row">
+        <div class="detail-header-left">
+          <div class="detail-badges">
+            <span class="badge-sale">FOR SALE</span>
+            <span class="badge-mls">${prop.mls}</span>
+          </div>
+          <h1 id="detail-title">${prop.title}</h1>
+          <div class="detail-location">
+            <span class="icon">📍</span> ${prop.location}
+          </div>
+        </div>
+        <div class="detail-header-right">
+          <div class="asking-price-label">Asking Price</div>
+          <div class="detail-price">${formatPrice(prop.price)}</div>
+        </div>
+      </div>
+
+      <div class="detail-gallery">
+        <img src="${prop.images[0]}" alt="Main view" class="gallery-img">
+        <img src="${prop.images[1]}" alt="Secondary view" class="gallery-img">
+        <img src="${prop.images[2]}" alt="Tertiary view" class="gallery-img">
+      </div>
+
+      <div class="detail-content-grid">
+        <div class="detail-main-col">
+          
+          <div class="detail-box detail-stats">
+            <div class="stat-block"><div class="stat-val">${prop.beds || 'N/A'}</div><div class="stat-lbl">Bedrooms</div></div>
+            <div class="stat-block"><div class="stat-val">${prop.baths || 'N/A'}</div><div class="stat-lbl">Bathrooms</div></div>
+            <div class="stat-block"><div class="stat-val">${prop.floorArea ? prop.floorArea + ' sqm' : 'N/A'}</div><div class="stat-lbl">Floor Area</div></div>
+            <div class="stat-block"><div class="stat-val">${prop.lotArea ? prop.lotArea + ' sqm' : 'N/A'}</div><div class="stat-lbl">Lot Area</div></div>
+            <div class="stat-block"><div class="stat-val">${prop.type}</div><div class="stat-lbl">Property Type</div></div>
+            <div class="stat-block"><div class="stat-val">${prop.yearBuilt}</div><div class="stat-lbl">Year Built</div></div>
+          </div>
+
+          <div class="detail-box">
+            <h3>Property Description</h3>
+            ${prop.description}
+          </div>
+
+          <div class="detail-box">
+            <h3>Features & Amenities</h3>
+            <ul class="features-list">
+              ${featuresList}
+            </ul>
+          </div>
+
+          <div class="detail-box">
+            <h3>Location Context</h3>
+            <div class="loc-context-inner">
+              <p><strong>Neighborhood:</strong> ${prop.neighborhood}</p>
+              <br>
+              <p>${prop.locationContext}</p>
+            </div>
+          </div>
+
+        </div>
+
+        <aside class="detail-sidebar">
+          <div class="detail-box">
+            <div class="agent-header">
+              <div class="agent-avatar">${prop.agent.initials}</div>
+              <div>
+                <div class="agent-name">${prop.agent.name}</div>
+                <div class="agent-title">${prop.agent.title}</div>
+              </div>
+            </div>
+            
+            <form class="inquiry-form" onsubmit="event.preventDefault(); alert('Inquiry Sent!');">
+              <h3 style="font-size: 18px;">Inquire About This Property</h3>
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" placeholder="Juan Dela Cruz" required>
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="juan@narrowrealestate.ph" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="0917 123 4567" required>
+              </div>
+              <div class="form-group">
+                <label>Message</label>
+                <textarea required>I am interested in the ${prop.title.replace(/<[^>]*>?/gm, '')}. Please contact me with more information.</textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-submit">Send Inquiry</button>
+            </form>
+          </div>
+        </aside>
+      </div>
+
+      <section class="similar-properties">
+        <h2>Similar Properties</h2>
+        <div class="similar-grid" id="similar-properties-grid"></div>
+      </section>
+
+    </div>
+  `;
+
+  container.innerHTML = detailHtml;
+
+  // Render 2 similar properties (excluding the current one)
+  const similarGrid = document.getElementById('similar-properties-grid');
+  const similarProps = propertiesData.filter(p => p.id !== id && p.type === prop.type).slice(0, 2);
+  
+  // Fallback if not enough similar types
+  if(similarProps.length < 2) {
+      const fallback = propertiesData.filter(p => p.id !== id && !similarProps.includes(p));
+      similarProps.push(...fallback.slice(0, 2 - similarProps.length));
+  }
+
+  renderProperties(similarProps, similarGrid, 'properties');
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -153,16 +342,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Home Page Rendering
+  // Route: Home Page
   const homeGrid = document.getElementById('home-properties-grid');
   if (homeGrid) {
     renderProperties(propertiesData.slice(0, 3), homeGrid, 'home');
   }
 
-  // Properties Page Rendering & Search Filter
+  // Route: Properties Page
   const propertiesGrid = document.getElementById('properties-page-grid');
   if (propertiesGrid) {
-    // Initial Render
     renderProperties(propertiesData, propertiesGrid, 'properties');
 
     const btnSearch = document.getElementById('btn-search');
@@ -174,26 +362,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const bedsVal = document.getElementById('filter-beds').value;
 
         const filtered = propertiesData.filter(prop => {
-          // Location Filter
           if (locVal !== 'All' && prop.city !== locVal) return false;
-          
-          // Property Type Filter
           if (typeVal !== 'All Types' && prop.type !== typeVal) return false;
-          
-          // Max Price Filter
           if (priceVal !== 'Any Price' && prop.price > parseInt(priceVal)) return false;
-          
-          // Bedrooms Filter
           if (bedsVal !== 'Any') {
             const minBeds = parseInt(bedsVal);
             if (!prop.beds || prop.beds < minBeds) return false;
           }
-
           return true;
         });
 
         renderProperties(filtered, propertiesGrid, 'properties');
       });
     }
+  }
+
+  // Route: Property Detail Page
+  const detailContainer = document.getElementById('property-detail-container');
+  if (detailContainer) {
+    renderPropertyDetail(detailContainer);
   }
 });
